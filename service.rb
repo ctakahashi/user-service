@@ -1,6 +1,7 @@
 require 'active_record'
 require 'sinatra'
-require './models/user'
+require_relative 'models/user'
+require 'pry'
 
 # setting up the environment
 env_index = ARGV.index("-e")
@@ -13,11 +14,13 @@ ActiveRecord::Base.establish_connection(databases[env])
 
 if env == "test"
   puts "starting in test mode"
+  # binding.pry
   User.destroy_all
   User.create(:name => "paul", 
+    :password => "strongpass",
   	:email => "paul@pauldix.net",
     :bio => "rubyist")
-  User.create(:name => "bryan", :email => "no spam")
+  User.create(:name => "bryan", :email => "random")
 end
 
 # HTTP entry points

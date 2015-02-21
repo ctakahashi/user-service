@@ -1,0 +1,73 @@
+ctakahashi@ubuntu:~/Dropbox/cosi105b_chungyuktakahashi/user-service$ rspec spec/service_spec.rb
+
+FFFFFFF
+
+Failures:
+
+  1) client should get a user
+     Failure/Error: user = User.find_by_name("paul")
+     RuntimeError:
+     # ./client.rb:15:in `find_by_name'
+     # ./spec/client_spec.rb:9:in `block (2 levels) in <top (required)>'
+
+  2) client should return nil for a user not found
+     Failure/Error: User.find_by_name("gosling").should be_nil
+     RuntimeError:
+     # ./client.rb:15:in `find_by_name'
+     # ./spec/client_spec.rb:16:in `block (2 levels) in <top (required)>'
+
+  3) client should create a user
+     Failure/Error: user = User.create({
+     RuntimeError:
+     # ./client.rb:26:in `create'
+     # ./spec/client_spec.rb:20:in `block (2 levels) in <top (required)>'
+
+  4) client should update a user
+     Failure/Error: user = User.update("paul", {:bio => "rubyist and author"})
+     NameError:
+       undefined local variable or method `reponse' for User:Class
+     # ./client.rb:37:in `update'
+     # ./spec/client_spec.rb:30:in `block (2 levels) in <top (required)>'
+
+  5) client should destroy a user
+     Failure/Error: User.destroy("bryan").should == true
+       expected: true
+            got: false (using ==)
+     # ./spec/client_spec.rb:37:in `block (2 levels) in <top (required)>'
+
+  6) client should verify login credentials
+     Failure/Error: user = User.login("paul", "strongpass")
+     RuntimeError:
+     # ./client.rb:54:in `login'
+     # ./spec/client_spec.rb:42:in `block (2 levels) in <top (required)>'
+
+  7) client should return nil with invalid credentials
+     Failure/Error: User.login("paul", "wrongpassword").should be_nil
+     RuntimeError:
+     # ./client.rb:54:in `login'
+     # ./spec/client_spec.rb:47:in `block (2 levels) in <top (required)>'
+
+Deprecation Warnings:
+
+Using `should` from rspec-expectations' old `:should` syntax without explicitly enabling the syntax is deprecated. Use the new `:expect` syntax or explicitly enable `:should` with `config.expect_with(:rspec) { |c| c.syntax = :should }` instead. Called from /home/ctakahashi/Dropbox/cosi105b_chungyuktakahashi/user-service/spec/client_spec.rb:37:in `block (2 levels) in <top (required)>'.
+
+
+If you need more of the backtrace for any of these deprecations to
+identify where to make the necessary changes, you can configure
+`config.raise_errors_for_deprecations!`, and it will turn the
+deprecation warnings into errors, giving you the full backtrace.
+
+1 deprecation warning total
+
+Finished in 0.06142 seconds (files took 0.82944 seconds to load)
+7 examples, 7 failures
+
+Failed examples:
+
+rspec ./spec/client_spec.rb:8 # client should get a user
+rspec ./spec/client_spec.rb:15 # client should return nil for a user not found
+rspec ./spec/client_spec.rb:19 # client should create a user
+rspec ./spec/client_spec.rb:29 # client should update a user
+rspec ./spec/client_spec.rb:36 # client should destroy a user
+rspec ./spec/client_spec.rb:41 # client should verify login credentials
+rspec ./spec/client_spec.rb:46 # client should return nil with invalid credentials

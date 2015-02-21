@@ -1,6 +1,15 @@
+require_relative '../client.rb'
+require 'pry'
+
 describe "client" do
-  before(:each) do
-  	User.base_uri = "http://localhost:3000"
+  before(:all) do
+    User.base_uri = "http://localhost:3000"
+
+    User.destroy("trotter")
+
+    User.update("paul", {:bio => "rubyist"})
+
+    User.create(:name => "bryan", :email => "random")
   end
   
   it "should get a user" do
@@ -15,11 +24,12 @@ describe "client" do
   end
 
   it "should create a user" do
-  	user = User.create({
+    user = User.create({
   	  :name => "trotter",
   	  :email => "no spam",
   	  :password => "whatev"})
-  	user["name"].should == "trotter"
+  	
+    user["name"].should == "trotter"
   	user["email"].should == "no spam"
   	User.find_by_name("trotter").should == user
   end

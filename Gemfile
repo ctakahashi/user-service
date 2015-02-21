@@ -1,0 +1,10 @@
+source "https://rubygems.org"
+
+gem "sqlite3"
+gem "rack"
+gem "sinatra"
+gem "activerecord"
+gem "json"
+gem "typhoeus"
+gem "sinatra-activerecord"
+gem "rspec"

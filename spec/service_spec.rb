@@ -7,8 +7,6 @@ require 'rack/test'
 set :environment, :test
 # Test::Unit::TestCase.send :include, Rack::Test::Methods
 
-
-
 # Delete all user records, since they're leftover from previous tests
 describe "service" do
   include Rack::Test::Methods
